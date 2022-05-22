@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<style>
+    
+        #navbar{
+            margin-top: 20px;
+        }
+        #navbar>div{
+            display: flex;
+            justify-content: space-around ;
+            width: 50%;
+            font-weight: bold;
+            font-size: 20px;
+            /* border: 1px solid black ; */
+             margin-bottom: 30px;
+
+        }
+
+        .one{
+            color:rgb(98, 98, 240);
+
+        }
+        
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px 20px;
+            width: 85%;
+            margin: auto;
+        }
+        #container>div{
+           width: 100%;
+        }
+
+        #container>div>p{
+            margin-left: 20px;
+
+        }
+        
+        #container>div>img{
+            width: 100%;
+            height: 50%;
+        }
+        button{
+          margin-left: 20px;
+        }
+
+</style>
+
+<body>
+    <div id="navbar">
+        <div>
+        <div class="one"> Batch01 :  </div>
+        <div class="batch1" id="batch1"></div>
+
+        <div class="one"> Batch02 : </div>
+        <div class="batch1" id="batch2"></div>
+
+        <div class="one">Batch03 : </div>
+        <div class="batch1" id="batch3"></div>
+
+        <div class="one"> Batch04 : </div>
+        <div class="batch1" id="batch4"></div>
+       </div>
+       </div>
+
+       <div id="container"></div>
+   
+</body>
+</html>
+
+<script >
+    
+function calcuate(){
+
+    
+var data = JSON.parse(localStorage.getItem("students"))
+
+var count1 = 0;
+var count2 = 0;
+var count3 = 0;
+var count4 = 0;
+
+data.forEach(function(el){
+    if(el.batch == 1){
+        count1++;   
+    } 
+})
+
+document.getElementById("batch1").innerText= count1
+
+
+data.forEach(function(el){
+    if(el.batch == 2){
+        count2++;   
+    } 
+})
+document.getElementById("batch2").innerText= count2
+
+data.forEach(function(el){
+    if(el.batch == 3){
+        count3++;   
+    } 
+})
+
+document.getElementById("batch3").innerText= count3
+data.forEach(function(el){
+    if(el.batch ==4){
+        count4++;   
+    } 
+})
+document.getElementById("batch4").innerText= count4
+
+
+
+localStorage.setItem("count1",JSON.stringify(count1))
+localStorage.setItem("count2",JSON.stringify(count2))
+localStorage.setItem("count3",JSON.stringify(count3))
+localStorage.setItem("count4",JSON.stringify(count4))
+
+}
+calcuate()
+
+</script>
+<script src="./scripts/dashboard.js"></script>
